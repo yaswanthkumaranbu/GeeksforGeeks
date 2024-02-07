@@ -1,0 +1,79 @@
+class Node
+{
+  int key;
+  Node left;
+  Node right;
+    Node (int key)
+  {
+	this.key = key;
+	left = null;
+	right = null;
+  }
+}
+public class Main
+{
+  static boolean Traversal (Node root, Node root1)
+  {
+	if (root == null && root1 == null)
+	  {
+		return true;
+	  }
+	  if(root==null || root1==null)
+	  {
+	      return false;
+	  }
+	else
+	  {
+
+		if (root.key != root1.key)
+		  {
+			return false;
+		  }
+// 		System.out.println (root.key + " " + root1.key);
+		boolean left = Traversal (root.left, root1.left);
+		if (left == false)
+		  {
+			return false;
+		  }
+		else
+		  {
+// 			System.out.println (root.key + " " + root1.key);
+			boolean right = Traversal (root.right, root1.right);
+			if (right == false)
+			  {
+				return false;
+			  }
+			else
+			  {
+				return true;
+			  }
+		  }
+	  }
+
+  }
+
+
+
+  public static void main (String[]args)
+  {
+	Node n = new Node (5);
+	n.left = new Node (10);
+	n.right = new Node (15);
+	n.left.left = new Node (20);
+	n.left.right = new Node (25);
+	n.right.left = new Node (30);
+	n.right.right = new Node (35);
+
+
+	Node n1 = new Node (5);
+	n1.left = new Node (10);
+	n1.right = new Node (15);
+	n1.left.left = new Node (20);
+	n1.left.right = new Node (25);
+	// n1.left.right.right = new Node (67);
+	n1.right.left = new Node (30);
+	n1.right.right = new Node (35);
+
+	System.out.println (Traversal (n, n1) ? "Both trees are identical":"Both trees are not identical");
+  }
+}

@@ -1,0 +1,43 @@
+import java.util.*;
+public class Main
+{
+    static void merge(int a,int b,int index,int[] arr)
+    {
+        int[] arrList = new int[arr.length];
+        int x=b,y=arr.length;
+       	while(a<x || b<y)
+		{
+		    if(a>=x)
+		    {
+		        arrList[index++]=arr[b];
+		        b++;
+		    }
+		    else if(b>=y)
+		    {
+		        arrList[index++]=arr[a];
+		        a++;
+		    }
+		    
+		    else if(arr[a]<arr[b] )
+		    {
+		        arrList[index++]=arr[a];
+		        a++;
+		    }
+		    else if(arr[a]>=arr[b] ) 
+		    {
+		        arrList[index++]=arr[b];
+		        b++;
+		    }
+		}
+		for(int ele:arrList)
+		System.out.print(ele+" "); 
+    }
+    
+	public static void main(String[] args) {
+		int arr[]={5,7,10,20,3,6,13,15,30};   // Considering 2 arrays (0-3 && 4-(arr.length-1))
+		int a=0,b=4;     // a-starting index of 1st array  b-starting index of 2nd array
+        int index = 0;
+        merge(a,b,index,arr);
+	
+	}
+}
